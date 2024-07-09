@@ -7,6 +7,15 @@
             <h1>Edit Journal</h1>
         </div>
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('journal.update', ['journal' => $journal->id]) }}" method="post">
                 @csrf
                 @method('PUT')
@@ -49,7 +58,8 @@
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <select class="form-control" id="status" name="status">
-                        <option value="progress" @if($journal->status == 'progress') selected @endif>Belum Tercapai</option>
+                        <option value="progress" @if($journal->status == 'progress') selected @endif>Belum Tercapai
+                        </option>
                         <option value="complete" @if($journal->timing == 'complete') selected @endif>Tercapai</option>
                     </select>
                 </div>

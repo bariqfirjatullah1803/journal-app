@@ -7,6 +7,11 @@
             <h5>List All Journal</h5>
         </div>
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    {{ $errors->first() }}
+                </div>
+            @endif
             <table class="table">
                 <thead>
                 <tr>

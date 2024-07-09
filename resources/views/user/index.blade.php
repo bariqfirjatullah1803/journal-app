@@ -8,6 +8,11 @@
             <a href="{{ route('user.create') }}" class="btn btn-primary">Create New</a>
         </div>
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    {{ $errors->first() }}
+                </div>
+            @endif
             <table class="table table-hover">
                 <thead>
                 <tr>

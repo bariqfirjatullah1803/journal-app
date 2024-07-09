@@ -16,5 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->render(function (\Illuminate\Database\QueryException $exception) {
+            return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
+        });
     })->create();
